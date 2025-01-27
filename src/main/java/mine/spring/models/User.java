@@ -1,15 +1,12 @@
-package ru.mine.spring.models;
+package mine.spring.models;
 
 import javax.persistence.*;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
-@Table(name="person")
-public class Person {
+@Table(name="user")
+public class User {
 
 
     @Id
@@ -21,6 +18,7 @@ public class Person {
     @Column(name="name")
     private String name;
     @Min(value = 0, message = "Age should be greater than 0")
+    @Max(value = 120,message = "Age should be valid")
     @Column(name="age")
     private int age;
     @NotEmpty(message = "Email shouldn't be empty")
@@ -28,7 +26,7 @@ public class Person {
     @Column(name="email")
     private String email;
 
-    public Person() {}
+    public User() {}
 
     public int getAge() {
         return age;
@@ -62,7 +60,7 @@ public class Person {
         this.name = name;
     }
 
-    public Person(int id, String name, int age) {
+    public User(int id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;

@@ -1,19 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>People</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список пользователей</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body>
 
-<div th:each="person : ${peopl}">
-<a th:href="@{/people/{id}(id=${person.getId()})}"
-   th:text="${person.getName() + ', ' + person.age}">user</a>
-</div>
+<h1>Список пользователей</h1>
 
-<br/>
-<hr/>
+<a href="/people/new" class="btn">Create new person</a>
 
-<a href="/people/new">Create new person</a>
+<table>
+    <thead>
+    <tr>
+        <th>Имя</th>
+        <th>Возраст</th>
+        <th>Электронная почта</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${people}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{/people/edit(id=${user.id})}" class="btn">Редактировать</a>
+            <form action="people/delete" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${user.id}">
+                <button type="submit" class="btn">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

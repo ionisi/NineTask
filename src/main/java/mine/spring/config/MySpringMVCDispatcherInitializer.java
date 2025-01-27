@@ -1,4 +1,4 @@
-package ru.mine.spring.config;
+package mine.spring.config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
@@ -18,7 +18,7 @@ public class MySpringMVCDispatcherInitializer extends AbstractAnnotationConfigDi
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {SpringConfig.class};
+        return new Class[] {JavaConfig.class};
     }
 
     @Override
