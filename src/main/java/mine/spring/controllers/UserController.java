@@ -12,28 +12,28 @@ import mine.spring.util.UserValidator;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/people")
-public class PeopleController {
+@RequestMapping("/users")
+public class UserController {
 
 
     private final UserService userService;
     private final UserValidator userValidator;
 
     @Autowired
-    public PeopleController(UserService userService, UserValidator userValidator) {
+    public UserController(UserService userService, UserValidator userValidator) {
         this.userService = userService;
         this.userValidator = userValidator;
     }
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("people", userService.index());
+        model.addAttribute("users", userService.getAll());
         return "people/index";
     }
 
     @GetMapping("/show")
     public String show(@RequestParam("id") int id, Model model) {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.getById(id));
         return "people/show";
     }
 
@@ -51,12 +51,12 @@ public class PeopleController {
             return "people/new";
         }
         userService.save(user);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 
     @GetMapping("/edit")
     public String edit(Model model, @RequestParam("id") int id) {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.getById(id));
         return "people/edit";
     }
 
@@ -69,12 +69,12 @@ public class PeopleController {
             return "people/edit";
         }
         userService.update(id, user);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 
     @PostMapping("/delete")
     public String delete(@RequestParam("id") int id) {
         userService.delete(id);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 }

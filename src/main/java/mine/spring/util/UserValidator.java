@@ -24,7 +24,7 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         User user = (User) o;
-        if (userService.showEmail(user.getEmail()).isPresent()) {
+        if (userService.getByEmail(user.getEmail()).isPresent()) {
             errors.rejectValue("email", null, "Email is already in use");
         }
     }

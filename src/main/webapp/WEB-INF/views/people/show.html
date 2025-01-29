@@ -12,9 +12,9 @@
 <p th:text="${user.age}">VALUE</p>
 
 
-<a th:href="@{/people/edit(id=${user.id})}">Edit</a>
+<a th:href="@{/users/edit(id=${user.id})}">Edit</a>
 
-<form th:method="POST" th:action="@{/people/delete(id=${user.id})}">
+<form th:method="POST" th:action="@{/users/delete(id=${user.id})}">
     <input type="submit" value="Delete">
 </form>
 </body>

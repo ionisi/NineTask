@@ -20,20 +20,20 @@ public class UserServiceImp implements UserService {
 
     @Override
     @Transactional
-    public List<User> index() {
-        return userDAO.index();
+    public List<User> getAll() {
+        return userDAO.getAll();
     }
 
     @Override
     @Transactional
-    public Optional<User> showEmail(String email) {
-        return userDAO.showEmail(email);
+    public Optional<User> getByEmail(String email) {
+        return userDAO.getByEmail(email);
     }
 
     @Override
     @Transactional
-    public User show(int id) {
-        return userDAO.show(id);
+    public User getById(int id) {
+        return userDAO.getById(id);
     }
 
     @Override

@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/people}" th:object="${user}">
+<form th:method="POST" th:action="@{/users}" th:object="${user}">
     <label for="name">Введите имя: </label>
     <input type="text" th:field="*{name}" id="name">
     <div style="color:mediumvioletred" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
@@ -22,7 +22,7 @@
     <input type="submit" value="Сохранить">
 </form>
 
-<a href="people" class="btn">Назад</a>
+<a href="users" class="btn">Назад</a>
 
 </body>
 </html>

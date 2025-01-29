@@ -19,7 +19,7 @@
 
 <h1>Список пользователей</h1>
 
-<a href="/people/new" class="btn">Create new person</a>
+<a href="/users/new" class="btn">Create new person</a>
 
 <table>
     <thead>
@@ -31,13 +31,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="user:${people}">
+    <tr th:each="user:${users}">
         <td th:text="${user.name}"></td>
         <td th:text="${user.age}"></td>
         <td th:text="${user.email}"></td>
         <td>
-            <a th:href="@{/people/edit(id=${user.id})}" class="btn">Редактировать</a>
-            <form action="people/delete" method="post" style="display:inline;">
+            <a th:href="@{/users/edit(id=${user.id})}" class="btn">Редактировать</a>
+            <form action="users/delete" method="post" style="display:inline;">
                 <input type="hidden" name="id" th:value="${user.id}">
                 <button type="submit" class="btn">Удалить</button>
             </form>

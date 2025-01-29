@@ -18,12 +18,12 @@ public class UserDAOImp implements UserDAO {
 
 
     @Transactional(readOnly = true)
-    public List<User> index() {
+    public List<User> getAll() {
         return entityManager.createQuery("select p from User p", User.class).getResultList();
     }
 
     @Transactional
-    public Optional<User> showEmail(String email) {
+    public Optional<User> getByEmail(String email) {
         return entityManager.createQuery("SELECT p FROM User p WHERE p.email = :email", User.class)
                 .setParameter("email", email)
                 .getResultStream()
@@ -31,7 +31,7 @@ public class UserDAOImp implements UserDAO {
     }
 
     @Transactional(readOnly = true)
-    public User show(int id) {
+    public User getById(int id) {
         return entityManager.find(User.class, id);
     }
 
